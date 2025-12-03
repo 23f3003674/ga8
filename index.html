@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Quarterly Earnings — Interactive RevealJS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- RevealJS core & themes (via CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme">
+
+  <!-- Code syntax highlighting theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css">
+
+  <style>
+    /* Minor tweaks for a clean look */
+    .reveal .slides section h1, .reveal .slides section h2 { letter-spacing: 0.5px; }
+    .email { font-size: 0.9em; opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title slide -->
+      <section>
+        <h1>Quarterly Earnings Report</h1>
+        <h3>Interactive stakeholder presentation</h3>
+        <p class="email">Contact: 23f3003674@ds.study.iitm.ac.in</p>
+        <aside class="notes">
+          Welcome the audience, set expectations: agenda, metrics, forecast, Q&A.
+          Mention the interactive elements: fragments, code, math, notes.
+        </aside>
+      </section>
+
+      <!-- Markdown slide (using data-markdown) -->
+      <section data-markdown>
+        <textarea data-template>
+# Summary highlights
+
+- **Revenue growth:** +12% YoY
+- **Operating margin:** 18.4%
+- **EPS (diluted):** ₹12.75
+- **Free cash flow:** Strong; reinvestment in tech and risk controls
+
+> Note: Macro headwinds moderated; FX impact minimal.
+
+<!-- Speaker notes -->
+<aside class="notes">
+Underline the drivers of growth: product uptake, cross-sell, and disciplined cost control.
+Call out one surprise: lower-than-expected credit losses.
+</aside>
+        </textarea>
+      </section>
+
+      <!-- Fragments for animated reveal -->
+      <section>
+        <h2>Key drivers this quarter</h2>
+        <ul>
+          <li class="fragment"><strong>Net interest margin expansion:</strong> Benefited from rate mix</li>
+          <li class="fragment"><strong>Fee income growth:</strong> Payments & advisory momentum</li>
+          <li class="fragment"><strong>Operating leverage:</strong> Automation efficiencies</li>
+          <li class="fragment"><strong>Risk costs:</strong> Stable credit performance</li>
+        </ul>
+        <aside class="notes">
+          Advance one fragment at a time. Tie each to a chart in the appendix if needed.
+        </aside>
+      </section>
+
+      <!-- Math: financial formulas (LaTeX via Math plugin) -->
+      <section>
+        <h2>Financial formulas</h2>
+        <p>
+          Weighted Average Cost of Capital:
+        </p>
+        <p>
+          \[
+            \text{WACC} = \frac{E}{V} \cdot R_e \;+\; \frac{D}{V} \cdot R_d \cdot (1 - T)
+          \]
+        </p>
+        <p>
+          Dividend Discount Model (Gordon Growth):
+        </p>
+        <p>
+          \[
+            P_0 = \frac{D_1}{r - g}
+          \]
+        </p>
+        <p>
+          Net Present Value:
+        </p>
+        <p>
+          \[
+            \text{NPV} = \sum_{t=1}^{n} \frac{CF_t}{(1+r)^t} \;-\; C_0
+          \]
+        </p>
+        <aside class="notes">
+          Briefly define variables: E/D/V are equity/debt/firm value; R_e/R_d costs; T tax rate.
+          Tie formulas to your assumptions slide.
+        </aside>
+      </section>
+
+      <!-- Code samples with syntax highlighting -->
+      <section>
+        <h2>Analyst notebook snippet</h2>
+        <pre><code class="language-python">
+import pandas as pd
+
+df = pd.read_csv("quarterly_metrics.csv")
+
+# Compute YoY growth
+df["rev_yoy"] = (df["revenue"] / df["revenue_prev_year"] - 1) * 100
+
+# EPS trend signal
+eps_ma_4 = df["eps"].rolling(4).mean()
+signal = (df["eps"].iloc[-1] > eps_ma_4.iloc[-1])
+
+print(f"Latest YoY revenue growth: {df['rev_yoy'].iloc[-1]:.2f}%")
+print("EPS above 4-quarter MA:", signal)
+        </code></pre>
+        <aside class="notes">
+          Explain how this snippet feeds dashboard tiles. Emphasize data lineage and validation checks.
+        </aside>
+      </section>
+
+      <!-- Appendix: assumptions and notes -->
+      <section>
+        <h2>Assumptions and sensitivities</h2>
+        <ul>
+          <li class="fragment"><strong>Rate path:</strong> Flat near term, mild cuts in H2</li>
+          <li class="fragment"><strong>Credit losses:</strong> Within historical bands</li>
+          <li class="fragment"><strong>Opex:</strong> Mix shift to automation & cloud</li>
+        </ul>
+        <aside class="notes">
+          Invite questions on sensitivity bands. Offer to open the model for deeper dive.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- RevealJS scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      plugins: [RevealMarkdown, RevealNotes, RevealHighlight, RevealMath.KaTeX],
+      // Math plugin configuration (KaTeX CDN auto-loaded by plugin)
+      math: {
+        mathjax2: false,
+        // Using KaTeX default settings
+      }
+    });
+  </script>
+</body>
+</html>
