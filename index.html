@@ -5,7 +5,7 @@
   <title>Quarterly Earnings — Interactive RevealJS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- RevealJS core & themes (via CDN) -->
+  <!-- RevealJS core & themes -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme">
 
@@ -13,27 +13,35 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css">
 
   <style>
-    /* Minor tweaks for a clean look */
-    .reveal .slides section h1, .reveal .slides section h2 { letter-spacing: 0.5px; }
-    .email { font-size: 0.9em; opacity: 0.8; }
+    .email { font-size: 1.05em; color: #FFD700; font-weight: 600; }
+    .footer {
+      position: fixed; left: 0; right: 0; bottom: 10px;
+      text-align: center; font-size: 0.9em; opacity: 0.8;
+    }
+    .footer span { margin: 0 0.5rem; }
   </style>
 </head>
 <body>
+  <!-- Global footer with email -->
+  <div class="footer">
+    <span>Contact: 23f3003674@ds.study.iitm.ac.in</span>
+    <span>Quarterly Earnings Report</span>
+  </div>
+
   <div class="reveal">
     <div class="slides">
 
-      <!-- Title slide -->
+      <!-- Title slide (email prominently visible) -->
       <section>
         <h1>Quarterly Earnings Report</h1>
         <h3>Interactive stakeholder presentation</h3>
         <p class="email">Contact: 23f3003674@ds.study.iitm.ac.in</p>
         <aside class="notes">
-          Welcome the audience, set expectations: agenda, metrics, forecast, Q&A.
-          Mention the interactive elements: fragments, code, math, notes.
+          Welcome the audience, outline agenda: highlights, drivers, formulas, model snippets, Q&A.
         </aside>
       </section>
 
-      <!-- Markdown slide (using data-markdown) -->
+      <!-- Markdown slide -->
       <section data-markdown>
         <textarea data-template>
 # Summary highlights
@@ -47,7 +55,7 @@
 
 <!-- Speaker notes -->
 <aside class="notes">
-Underline the drivers of growth: product uptake, cross-sell, and disciplined cost control.
+Emphasize growth drivers: product uptake, cross-sell, disciplined cost control.
 Call out one surprise: lower-than-expected credit losses.
 </aside>
         </textarea>
@@ -57,46 +65,33 @@ Call out one surprise: lower-than-expected credit losses.
       <section>
         <h2>Key drivers this quarter</h2>
         <ul>
-          <li class="fragment"><strong>Net interest margin expansion:</strong> Benefited from rate mix</li>
-          <li class="fragment"><strong>Fee income growth:</strong> Payments & advisory momentum</li>
+          <li class="fragment"><strong>Net interest margin:</strong> Benefited from rate mix</li>
+          <li class="fragment"><strong>Fee income:</strong> Payments & advisory momentum</li>
           <li class="fragment"><strong>Operating leverage:</strong> Automation efficiencies</li>
           <li class="fragment"><strong>Risk costs:</strong> Stable credit performance</li>
         </ul>
         <aside class="notes">
-          Advance one fragment at a time. Tie each to a chart in the appendix if needed.
+          Advance one fragment at a time and tie each to supporting charts in the appendix.
         </aside>
       </section>
 
-      <!-- Math: financial formulas (LaTeX via Math plugin) -->
+      <!-- Financial formulas (LaTeX) -->
       <section>
         <h2>Financial formulas</h2>
-        <p>
-          Weighted Average Cost of Capital:
-        </p>
-        <p>
-          \[
-            \text{WACC} = \frac{E}{V} \cdot R_e \;+\; \frac{D}{V} \cdot R_d \cdot (1 - T)
-          \]
-        </p>
-        <p>
-          Dividend Discount Model (Gordon Growth):
-        </p>
-        <p>
-          \[
-            P_0 = \frac{D_1}{r - g}
-          \]
-        </p>
-        <p>
-          Net Present Value:
-        </p>
-        <p>
-          \[
-            \text{NPV} = \sum_{t=1}^{n} \frac{CF_t}{(1+r)^t} \;-\; C_0
-          \]
-        </p>
+        <p>Weighted Average Cost of Capital (WACC):</p>
+        \[
+          \text{WACC} = \frac{E}{V} \cdot R_e + \frac{D}{V} \cdot R_d \cdot (1 - T)
+        \]
+        <p>Dividend Discount Model (Gordon Growth):</p>
+        \[
+          P_0 = \frac{D_1}{r - g}
+        \]
+        <p>Net Present Value (NPV):</p>
+        \[
+          \text{NPV} = \sum_{t=1}^{n} \frac{CF_t}{(1+r)^t} - C_0
+        \]
         <aside class="notes">
-          Briefly define variables: E/D/V are equity/debt/firm value; R_e/R_d costs; T tax rate.
-          Tie formulas to your assumptions slide.
+          Define variables: E/D/V equity/debt/value; R_e/R_d costs; T tax rate; r discount; g growth; CF cash flows.
         </aside>
       </section>
 
@@ -119,11 +114,11 @@ print(f"Latest YoY revenue growth: {df['rev_yoy'].iloc[-1]:.2f}%")
 print("EPS above 4-quarter MA:", signal)
         </code></pre>
         <aside class="notes">
-          Explain how this snippet feeds dashboard tiles. Emphasize data lineage and validation checks.
+          Explain lineage: source, validation checks, and how outputs feed dashboard tiles.
         </aside>
       </section>
 
-      <!-- Appendix: assumptions and notes -->
+      <!-- Appendix -->
       <section>
         <h2>Assumptions and sensitivities</h2>
         <ul>
@@ -132,7 +127,7 @@ print("EPS above 4-quarter MA:", signal)
           <li class="fragment"><strong>Opex:</strong> Mix shift to automation & cloud</li>
         </ul>
         <aside class="notes">
-          Invite questions on sensitivity bands. Offer to open the model for deeper dive.
+          Invite questions on sensitivity bands. Offer deeper model dive if needed.
         </aside>
       </section>
 
@@ -151,11 +146,7 @@ print("EPS above 4-quarter MA:", signal)
       hash: true,
       slideNumber: true,
       plugins: [RevealMarkdown, RevealNotes, RevealHighlight, RevealMath.KaTeX],
-      // Math plugin configuration (KaTeX CDN auto-loaded by plugin)
-      math: {
-        mathjax2: false,
-        // Using KaTeX default settings
-      }
+      math: { mathjax2: false }
     });
   </script>
 </body>
