@@ -1,87 +1,132 @@
 ---
+
 marp: true
-theme: custom
+title: Product Documentation — Marp Slides
+author: Technical Writing Team
+theme: default
 paginate: true
----
+class: lead
+-----------
 
-<!-- Custom theme specification -->
+<!-- Email: 23f3003674@ds.study.iitm.ac.in -->
+
 <style>
+/* Custom theme overrides for Marp (embedded) */
 section {
-  font-family: "Segoe UI", sans-serif;
-  color: #222;
+  background: linear-gradient(180deg, #0f172a 0%, #071024 100%);
+  color: #e6eef8;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
-h1 {
-  color: #0055aa;
-}
-footer {
-  font-size: 0.8em;
-  color: #666;
-}
+h1, h2, h3 { color: #7dd3fc; }
+footer { color: #9fb3cf; font-size: 0.8rem }
+code { background: rgba(255,255,255,0.04); padding: 0.2rem 0.4rem; border-radius: 4px }
+/* Larger preformatted blocks */
+pre { font-size: 0.85rem }
 </style>
 
-# Product Documentation Presentation
+<!-- _footer: 23f3003674@ds.study.iitm.ac.in -->
 
-**Technical Writer — Software Company**  
-📧 23f3003674@ds.study.iitm.ac.in
+<!-- _header: **Product Documentation — Marp** -->
 
----
+<!-- _class: lead -->
 
-# Agenda
+# Product Documentation — Overview
 
-- Introduction  
-- Product Features  
-- Architecture  
-- Algorithmic Complexity  
-- Q&A
+Contact: [23f3003674@ds.study.iitm.ac.in](mailto:23f3003674@ds.study.iitm.ac.in)
 
 ---
 
-<!-- Slide with background image -->
-![bg](https://images.unsplash.com/photo-1581090700227-4c4f7c3a3f1e)
+## Table of Contents
 
-# Product Overview
-
-Our product enables seamless integration with enterprise workflows.  
-Customizable, scalable, and secure.
-
----
-
-# Custom Styling Example
-
-<style scoped>
-h2 {
-  color: #d6336c;
-  text-decoration: underline;
-}
-ul li {
-  font-size: 1.1em;
-  margin-bottom: 0.5em;
-}
-</style>
-
-## Key Features
-
-- **API-first design**  
-- **Cloud-native deployment**  
-- **Role-based access control**  
+1. Introduction
+2. Architecture
+3. Usage
+4. API
+5. Algorithms & Complexity
 
 ---
 
-# Algorithmic Complexity
+<!-- _backgroundImage: url('images/architecture-bg.jpg') -->
 
-We analyze performance using Big-O notation:
+## System Architecture
 
-\[
-T(n) = O(n \log n)
-\]
+![bg cover](images/architecture-bg.jpg)
 
-Example: Sorting algorithms like Merge Sort and Quick Sort.
+> Diagram: High-level system architecture and data flows.
 
 ---
 
-# Contact
+## Code Example (Usage)
 
-📧 23f3003674@ds.study.iitm.ac.in  
-For documentation updates, please check version control in GitHub.
+```javascript
+// Initialize client
+import { Client } from '@acme/sdk'
+
+const client = new Client({ apiKey: process.env.API_KEY })
+const res = await client.get('/v1/health')
+console.log(res.status)
+```
 
 ---
+
+## Algorithm Complexity (Math)
+
+We analyze the ranking algorithm. Let $n$ be the number of items and $k$ the number of top results.
+
+Block complexity:
+
+$$
+T(n) = O(n \log n) \quad\text{(full sort)}
+$$
+
+If using a selection algorithm for top-$k$:
+
+$$
+T(n) = O(n + k\log k)
+$$
+
+---
+
+<!-- _class: center, middle -->
+
+## Key Configuration (Directives)
+
+* Use environment variables for secrets
+* Enable `--allow-local-files` when exporting locally with Marp CLI to include images
+
+<!-- _footer: *Page footer — product docs* -->
+
+---
+
+## Slide with custom directive and fragments
+
+* Feature A: Fast onboarding <!-- _color: #9ae6b4 -->
+* Feature B: Scalable storage <!-- _color: #fbd38d -->
+* Feature C: Secure by design <!-- _color: #fccb6e -->
+
+---
+
+## Speaker Notes Example
+
+Notes:
+
+* Start with the product mission and highlight adoption metrics.
+* For the architecture slide, point out the async queue and caching layer.
+
+---
+
+## Background Image Slide
+
+![bg fit](images/feature-bg.jpg)
+
+This slide demonstrates a full-slide background image using `![bg fit](path)`.
+
+---
+
+## Closing & Contact
+
+Questions? Reach out:
+
+* Email: <a href="mailto:23f3003674@ds.study.iitm.ac.in">[23f3003674@ds.study.iitm.ac.in](mailto:23f3003674@ds.study.iitm.ac.in)</a>
+
+<!-- Notes: End of presentation -->
