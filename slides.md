@@ -1,13 +1,11 @@
 ---
-
 marp: true
 title: "Product Documentation — Marp Slides"
 author: "Technical Writing Team"
 theme: default
 paginate: true
 class: lead
------------
-
+---
 <!-- Email: 23f3003674@ds.study.iitm.ac.in -->
 
 <style>
